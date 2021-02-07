@@ -32,27 +32,22 @@ class Extractor(ABC):
     def data(self):
         if not self._data:
             self.extract_url()
+
+            if not self._data:
+                return {}
         return self._data
 
     @property
     def preferred_stream_url(self):
-        if not self._data:
-            self.extract_url()
-        return self._data["sources"][self.preferred_quality]
+        return self.data.get("sources", {}).get(self.preferred_quality)
 
     @property
     def preferred_quality(self):
-        if not self._data:
-            self.extract_url()
-        return self._data["preferred_quality"]
+        return self.data.get("preferred_quality")
 
     @property
     def qualities(self):
-        if not self._data:
-            self.extract_url()
-        return list(self._data["sources"].keys())
+        return list(self.data.get("sources", {}).keys())
 
     def __str__(self):
-        if not self._data:
-            self.extract_url()
-        return self.preferred_stream_url
+        return str(self.preferred_stream_url)

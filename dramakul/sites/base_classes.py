@@ -1,35 +1,12 @@
 from abc import ABC, abstractmethod
+from typing import List
 
+from dramakul.extractors import Extractor
 from dramakul.util import create_session
 
 
-class Site(ABC):
-    name = ""
-    domain = ""
-    meta = {}
-
-    def __init__(self):
-        self.session = create_session()
-
-    @abstractmethod
-    def search(self, query, **kwargs):
-        pass
-
-    @abstractmethod
-    def get_info(self, url, **kwargs):
-        pass
-
-    @abstractmethod
-    def get_episode(self, url, **kwargs):
-        pass
-
-    @abstractmethod
-    def extract_episode(self, episode, **kwargs):
-        pass
-
-
 class SearchResult:
-    def __init__(self, site: Site, title: str, url: str, meta={}):
+    def __init__(self, site, title: str, url: str, meta={}):
         self.site = site
         self.title = title
         self.url = url
@@ -43,7 +20,7 @@ class SearchResult:
 
 
 class Drama:
-    def __init__(self, site: Site, title: str, url: str, meta={}):
+    def __init__(self, site, title: str, url: str, meta={}):
         self.site = site
         self.title = title
         self.url = url
@@ -55,7 +32,7 @@ class Drama:
 
 
 class Episode:
-    def __init__(self, site: Site, url: str, drama: Drama = None, episode_number: str = None, meta={}):
+    def __init__(self, site, url: str, drama: Drama = None, episode_number: str = None, meta={}):
         self.site = site
         self.drama = drama
         self.episode_number = episode_number
@@ -63,8 +40,42 @@ class Episode:
         self.meta = meta
         self.extractors = []
 
-    def extract(self):
+    @property
+    def stream_url(self):
+        if not self.extractors:
+            self.extract()
+
+        for extractor in self.extractors:
+            if extractor.data:
+                return extractor.preferred_stream_url
+
+    def extract(self) -> List[Extractor]:
         return self.site.extract_episode(self)
 
     def __str__(self):
         return f"{self.drama} - {self.episode_number}"
+
+
+class Site(ABC):
+    name = ""
+    domain = ""
+    meta = {}
+
+    def __init__(self):
+        self.session = create_session()
+
+    @abstractmethod
+    def search(self, query, **kwargs) -> List[SearchResult]:
+        pass
+
+    @abstractmethod
+    def get_info(self, url, **kwargs) -> Drama:
+        pass
+
+    @abstractmethod
+    def get_episode(self, url, **kwargs) -> Episode:
+        pass
+
+    @abstractmethod
+    def extract_episode(self, episode, **kwargs) -> List[Extractor]:
+        pass
