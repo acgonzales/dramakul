@@ -51,10 +51,15 @@ class Dramacool9(Site):
             title = anchor.text
             url = anchor["href"]
             episode_number = title.split(" ")[-1]
-            drama.episodes.append(Episode(self, episode_number, url, drama=drama, meta={
+            drama.episodes.append(Episode(self, url, episode_number=episode_number, drama=drama, meta={
                 "title": title
             }))
         return drama
+
+    def get_episode(self, url, **kwargs):
+        episode = Episode(self, url)
+        episode.extract()
+        return episode
 
     def extract_episode(self, episode: Episode, **kwargs):
         res = self.session.get(episode.url)

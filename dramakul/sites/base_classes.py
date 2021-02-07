@@ -20,6 +20,10 @@ class Site(ABC):
         pass
 
     @abstractmethod
+    def get_episode(self, url, **kwargs):
+        pass
+
+    @abstractmethod
     def extract_episode(self, episode, **kwargs):
         pass
 
@@ -51,7 +55,7 @@ class Drama:
 
 
 class Episode:
-    def __init__(self, site: Site, episode_number: str, url: str, drama: Drama = None, meta={}):
+    def __init__(self, site: Site, url: str, drama: Drama = None, episode_number: str = None, meta={}):
         self.site = site
         self.drama = drama
         self.episode_number = episode_number
