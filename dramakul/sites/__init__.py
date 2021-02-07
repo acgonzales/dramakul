@@ -1,4 +1,4 @@
-from dramakul.sites.site import Site
+from dramakul.sites.base_classes import Site, SearchResult
 from dramakul.sites.dramacool9 import Dramacool9
 
 SITES = {

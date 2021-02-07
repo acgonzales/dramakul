@@ -18,3 +18,14 @@ class Site(ABC):
     @abstractmethod
     def get_info(self, url, **kwargs):
         pass
+
+
+class SearchResult:
+    def __init__(self, site: Site, title: str, url: str, meta={}):
+        self.site = site
+        self.title = title
+        self.url = url
+        self.meta = meta
+
+    def get_info(self):
+        return self.site.get_info(self.url)

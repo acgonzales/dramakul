@@ -1,4 +1,4 @@
-from dramakul.sites import Site
+from dramakul.sites import Site, SearchResult
 from dramakul.util import soupify
 
 
@@ -17,9 +17,8 @@ class Dramacool9(Site):
         res = self.session.get(search_url)
         soup = soupify(res.content)
 
-        results = soup.select("#main > ul > li")
         search_results = []
-        for result in results:
+        for result in soup.select("#main > ul > li"):
             details = result.select_one("div.post-details")
 
             poster = result.select_one("figure > a > img")["data-original"]
@@ -28,12 +27,10 @@ class Dramacool9(Site):
             title = title_h2.text
             url = title_h2.find("a")["href"]
 
-            search_results.append({
-                "title": title,
-                "url": url,
+            search_results.append(SearchResult(self, title, url, meta={
                 "poster": poster
-            })
+            }))
         return search_results
 
     def get_info(self, url, **kwargs):
-        pass
+        raise NotImplementedError()

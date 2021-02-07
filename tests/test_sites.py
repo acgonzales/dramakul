@@ -6,8 +6,8 @@ QUERY = "beauty"
 
 
 class TestSite(unittest.TestCase):
-    def test_search(self):
+    def test_search(_):
         for name, data in SITES.items():
             site = data["cls"]()
             results = site.search(QUERY)
-            assert len(results) > 0, f"Search error, {name}"
+            assert len(results) > 0, name
