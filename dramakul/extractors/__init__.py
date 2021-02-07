@@ -5,7 +5,7 @@ from dramakul.extractors.xstreamcdn import XStreamCDN
 EXTRACTORS = [Cloud9, XStreamCDN]
 
 
-def get_extractor(url, *args, **kwargs):
+def get_extractor(url, *args, **kwargs) -> Extractor:
     for extractor in EXTRACTORS:
         for regex in extractor.regexes:
             if regex in url:

@@ -7,7 +7,7 @@ class Extractor(ABC):
     name = ""
     regexes = []
 
-    def __init__(self, url: str, session=None, referer: str = None):
+    def __init__(self, url: str, session=None, referer: str = None, eager: bool = False):
         self.url = url
         self._data = {}
 
@@ -21,10 +21,13 @@ class Extractor(ABC):
         else:
             self.referer = self.session.headers.get("Referer", "")
 
+        if eager:
+            self.extract_url()
+
     @abstractmethod
     def extract_url(self):
         pass
-    
+
     @property
     def data(self):
         if not self._data:
@@ -48,3 +51,8 @@ class Extractor(ABC):
         if not self._data:
             self.extract_url()
         return list(self._data["sources"].keys())
+
+    def __str__(self):
+        if not self._data:
+            self.extract_url()
+        return self.preferred_stream_url
