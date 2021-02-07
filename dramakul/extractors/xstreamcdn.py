@@ -18,7 +18,7 @@ class XStreamCDN(Extractor):
         for source in data:
             sources[source["label"]] = source["file"]
 
-        self.data = {
+        self._data = {
             "sources": sources,
             "preferred_quality": list(sources.keys())[-1]
         }
