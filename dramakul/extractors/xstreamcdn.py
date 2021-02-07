@@ -3,7 +3,8 @@ from dramakul.extractors import Extractor
 
 class XStreamCDN(Extractor):
     name = "XStreamCDN"
-    regexes = ["xstreamcdn", "fcdn.stream", "https://fcdn.stream"]
+    regexes = ["xstreamcdn", "fcdn.stream",
+               "fembed.com", "https://fcdn.stream", "https://www.fembed.com"]
 
     def __init__(self, url, *args, **kwargs):
         super().__init__(url, *args)
