@@ -1,0 +1,231 @@
+[[package]]
+name = "altgraph"
+version = "0.17"
+description = "Python graph (network) package"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "autopep8"
+version = "1.5.5"
+description = "A tool that automatically formats Python code to conform to the PEP 8 style guide"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pycodestyle = ">=2.6.0"
+toml = "*"
+
+[[package]]
+name = "certifi"
+version = "2020.12.5"
+description = "Python package for providing Mozilla's CA Bundle."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "chardet"
+version = "4.0.0"
+description = "Universal encoding detector for Python 2 and 3"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[[package]]
+name = "future"
+version = "0.18.2"
+description = "Clean single-source support for Python 3 and 2"
+category = "dev"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
+name = "idna"
+version = "2.10"
+description = "Internationalized Domain Names in Applications (IDNA)"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
+name = "macholib"
+version = "1.14"
+description = "Mach-O header analysis and editing"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+altgraph = ">=0.15"
+
+[[package]]
+name = "pefile"
+version = "2019.4.18"
+description = "Python PE parsing module"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+future = "*"
+
+[[package]]
+name = "pycodestyle"
+version = "2.6.0"
+description = "Python style guide checker"
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
+name = "pyinstaller"
+version = "4.2"
+description = "PyInstaller bundles a Python application and all its dependencies into a single package."
+category = "dev"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+altgraph = "*"
+macholib = {version = ">=1.8", markers = "sys_platform == \"darwin\""}
+pefile = {version = ">=2017.8.1", markers = "sys_platform == \"win32\""}
+pyinstaller-hooks-contrib = ">=2020.6"
+pywin32-ctypes = {version = ">=0.2.0", markers = "sys_platform == \"win32\""}
+
+[package.extras]
+encryption = ["tinyaes (>=1.0.0)"]
+hook_testing = ["pytest (>=2.7.3)", "execnet (>=1.5.0)", "psutil"]
+
+[[package]]
+name = "pyinstaller-hooks-contrib"
+version = "2020.11"
+description = "Community maintained hooks for PyInstaller"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "pysimplegui"
+version = "4.34.0"
+description = "Python GUIs for Humans. Launched in 2018. It's 2021 & PySimpleGUI is an ACTIVE project. Super-simple to create custom GUI's. 300 Demo programs & Cookbook for rapid start. Extensive documentation. Main docs at www.PySimpleGUI.org. Your success is the focus. Examples using Machine Learning (GUI, OpenCV Integration,  Chatterbot), Rainmeter Style Desktop Widgets, Matplotlib + Pyplot, PIL support, add GUI to command line scripts, PDF & Image Viewers. Great for beginners & advanced GUI programmers"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "pywin32-ctypes"
+version = "0.2.0"
+description = ""
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "requests"
+version = "2.25.1"
+description = "Python HTTP for Humans."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+chardet = ">=3.0.2,<5"
+idna = ">=2.5,<3"
+urllib3 = ">=1.21.1,<1.27"
+
+[package.extras]
+security = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)"]
+socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
+
+[[package]]
+name = "toml"
+version = "0.10.2"
+description = "Python Library for Tom's Obvious, Minimal Language"
+category = "dev"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
+name = "urllib3"
+version = "1.26.3"
+description = "HTTP library with thread-safe connection pooling, file post, and more."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
+
+[package.extras]
+brotli = ["brotlipy (>=0.6.0)"]
+secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
+socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "c1fdbe7ba9fef63416bcdb7441fbcdf802bed279089c2d2097097bed52b0fbc7"
+
+[metadata.files]
+altgraph = [
+    {file = "altgraph-0.17-py2.py3-none-any.whl", hash = "sha256:c623e5f3408ca61d4016f23a681b9adb100802ca3e3da5e718915a9e4052cebe"},
+    {file = "altgraph-0.17.tar.gz", hash = "sha256:1f05a47122542f97028caf78775a095fbe6a2699b5089de8477eb583167d69aa"},
+]
+autopep8 = [
+    {file = "autopep8-1.5.5-py2.py3-none-any.whl", hash = "sha256:9e136c472c475f4ee4978b51a88a494bfcd4e3ed17950a44a988d9e434837bea"},
+    {file = "autopep8-1.5.5.tar.gz", hash = "sha256:cae4bc0fb616408191af41d062d7ec7ef8679c7f27b068875ca3a9e2878d5443"},
+]
+certifi = [
+    {file = "certifi-2020.12.5-py2.py3-none-any.whl", hash = "sha256:719a74fb9e33b9bd44cc7f3a8d94bc35e4049deebe19ba7d8e108280cfd59830"},
+    {file = "certifi-2020.12.5.tar.gz", hash = "sha256:1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c"},
+]
+chardet = [
+    {file = "chardet-4.0.0-py2.py3-none-any.whl", hash = "sha256:f864054d66fd9118f2e67044ac8981a54775ec5b67aed0441892edb553d21da5"},
+    {file = "chardet-4.0.0.tar.gz", hash = "sha256:0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"},
+]
+future = [
+    {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},
+]
+idna = [
+    {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
+    {file = "idna-2.10.tar.gz", hash = "sha256:b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"},
+]
+macholib = [
+    {file = "macholib-1.14-py2.py3-none-any.whl", hash = "sha256:c500f02867515e6c60a27875b408920d18332ddf96b4035ef03beddd782d4281"},
+    {file = "macholib-1.14.tar.gz", hash = "sha256:0c436bc847e7b1d9bda0560351bf76d7caf930fb585a828d13608839ef42c432"},
+]
+pefile = [
+    {file = "pefile-2019.4.18.tar.gz", hash = "sha256:a5d6e8305c6b210849b47a6174ddf9c452b2888340b8177874b862ba6c207645"},
+]
+pycodestyle = [
+    {file = "pycodestyle-2.6.0-py2.py3-none-any.whl", hash = "sha256:2295e7b2f6b5bd100585ebcb1f616591b652db8a741695b3d8f5d28bdc934367"},
+    {file = "pycodestyle-2.6.0.tar.gz", hash = "sha256:c58a7d2815e0e8d7972bf1803331fb0152f867bd89adf8a01dfd55085434192e"},
+]
+pyinstaller = [
+    {file = "pyinstaller-4.2.tar.gz", hash = "sha256:f5c0eeb2aa663cce9a5404292c0195011fa500a6501c873a466b2e8cad3c950c"},
+]
+pyinstaller-hooks-contrib = [
+    {file = "pyinstaller-hooks-contrib-2020.11.tar.gz", hash = "sha256:fc3290a2ca337d1d58c579c223201360bfe74caed6454eaf5a2550b77dbda45c"},
+    {file = "pyinstaller_hooks_contrib-2020.11-py2.py3-none-any.whl", hash = "sha256:fa8280b79d8a2b267a2e43ff44f73b3e4a68fc8d205b8d34e8e06c960f7c2fcf"},
+]
+pysimplegui = [
+    {file = "PySimpleGUI-4.34.0-py3-none-any.whl", hash = "sha256:b7b986512d77bf50a92207579bed4cf7f2f287ce14a82f4b57c5f368bca54c9c"},
+    {file = "PySimpleGUI-4.34.0.tar.gz", hash = "sha256:1169d3434137242eca2c95ca13ec21de398990563e8f58a10b581ebd127b13cd"},
+]
+pywin32-ctypes = [
+    {file = "pywin32-ctypes-0.2.0.tar.gz", hash = "sha256:24ffc3b341d457d48e8922352130cf2644024a4ff09762a2261fd34c36ee5942"},
+    {file = "pywin32_ctypes-0.2.0-py2.py3-none-any.whl", hash = "sha256:9dc2d991b3479cc2df15930958b674a48a227d5361d413827a4cfd0b5876fc98"},
+]
+requests = [
+    {file = "requests-2.25.1-py2.py3-none-any.whl", hash = "sha256:c210084e36a42ae6b9219e00e48287def368a26d03a048ddad7bfee44f75871e"},
+    {file = "requests-2.25.1.tar.gz", hash = "sha256:27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"},
+]
+toml = [
+    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
+urllib3 = [
+    {file = "urllib3-1.26.3-py2.py3-none-any.whl", hash = "sha256:1b465e494e3e0d8939b50680403e3aedaa2bc434b7d5af64dfd3c958d7f5ae80"},
+    {file = "urllib3-1.26.3.tar.gz", hash = "sha256:de3eedaad74a2683334e282005cd8d7f22f4d55fa690a2a1020a416cb0a47e73"},
+]
