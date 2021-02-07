@@ -1,4 +1,4 @@
-from dramakul.sites import Site, SearchResult
+from dramakul.sites import Site, SearchResult, Drama, Episode
 from dramakul.util import soupify
 
 
@@ -33,4 +33,24 @@ class Dramacool9(Site):
         return search_results
 
     def get_info(self, url, **kwargs):
-        raise NotImplementedError()
+        res = self.session.get(url)
+        soup = soupify(res.content)
+
+        title = soup.select_one(
+            "#drama-details > div.drama-details.wrapper > header > h1").text
+        poster = soup.select_one(
+            "#drama-details > figure > a > img")["data-original"]
+
+        drama = Drama(self, title, url, meta={
+            "poster": poster
+        })
+
+        for episode in soup.select("#all-episodes > ul > li"):
+            anchor = episode.select_one("h3 > a")
+            title = anchor.text
+            url = anchor["href"]
+            episode_number = title.split(" ")[-1]
+            drama.episodes.append(Episode(self, drama, episode_number, url, meta={
+                "title": title
+            }))
+        return drama
