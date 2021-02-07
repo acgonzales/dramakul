@@ -34,10 +34,12 @@ class Cloud9(Extractor):
 
             sources[quality] = source["file"]
 
-        return {
+        self.data = {
             "sources": sources,
             "preferred_quality": list(sources.keys())[0],
             "meta": {
                 "file_name": data["name"]
             }
         }
+
+        return self.data
