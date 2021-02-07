@@ -9,7 +9,7 @@ QUERY = "beauty"
 class TestSite(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.sites = [site for site in SITES]
+        self.sites = [site() for site in SITES]
 
     def test_site_functions(self):
         for site in self.sites:
