@@ -19,6 +19,10 @@ class Site(ABC):
     def get_info(self, url, **kwargs):
         pass
 
+    @abstractmethod
+    def extract_episode(self, episode, **kwargs):
+        pass
+
 
 class SearchResult:
     def __init__(self, site: Site, title: str, url: str, meta={}):
@@ -47,12 +51,16 @@ class Drama:
 
 
 class Episode:
-    def __init__(self, site: Site, drama: Drama, episode_number: str, url: str, meta={}):
+    def __init__(self, site: Site, episode_number: str, url: str, drama: Drama = None, meta={}):
         self.site = site
         self.drama = drama
         self.episode_number = episode_number
         self.url = url
         self.meta = meta
+        self.extractors = []
+
+    def extract(self):
+        return self.site.extract_episode(self)
 
     def __str__(self):
-        return f"{self.drama.title} - {self.episode_number}"
+        return f"{self.drama} - {self.episode_number}"

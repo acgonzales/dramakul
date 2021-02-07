@@ -1,3 +1,4 @@
+from dramakul.extractors import get_extractor
 from dramakul.sites import Site, SearchResult, Drama, Episode
 from dramakul.util import soupify
 
@@ -50,7 +51,17 @@ class Dramacool9(Site):
             title = anchor.text
             url = anchor["href"]
             episode_number = title.split(" ")[-1]
-            drama.episodes.append(Episode(self, drama, episode_number, url, meta={
+            drama.episodes.append(Episode(self, episode_number, url, drama=drama, meta={
                 "title": title
             }))
         return drama
+
+    def extract_episode(self, episode: Episode, **kwargs):
+        res = self.session.get(episode.url)
+        soup = soupify(res.content)
+
+        for server in soup.select("#w-server > div.serverslist"):
+            extractor = get_extractor(server.get("data-server"))
+            if extractor:
+                episode.extractors.append(extractor)
+        return episode.extractors
