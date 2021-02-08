@@ -15,6 +15,7 @@ requests = "^2.25.1"
 PySimpleGUI = "^4.34.0"
 typer = {extras = ["all"], version = "^0.3.2"}
 beautifulsoup4 = "^4.9.3"
+jsbeautifier = "^1.13.5"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.5.5"
