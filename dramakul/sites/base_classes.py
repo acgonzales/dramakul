@@ -20,13 +20,15 @@ class SearchResult:
 
 
 class Drama:
-    # TODO: __getitem__
     def __init__(self, site, title: str, url: str, meta={}):
         self.site = site
         self.title = title
         self.url = url
         self.meta = meta
         self.episodes = []
+
+    def __getitem__(self, i):
+        return self.episodes[i]
 
     def __str__(self):
         return self.title
