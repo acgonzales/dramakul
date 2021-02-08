@@ -7,7 +7,7 @@ class XStreamCDN(Extractor):
                "fembed.com", "https://fcdn.stream", "https://www.fembed.com"]
 
     def __init__(self, url, *args, **kwargs):
-        super().__init__(url, *args)
+        super().__init__(url, *args, **kwargs)
 
     def extract_url(self):
         data = self.session.post(

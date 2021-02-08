@@ -6,7 +6,7 @@ class Watchasian(Extractor):
     regexes = ["watchasian", "watchasian.cc", "embed.watchasian"]
 
     def __init__(self, url, *args, **kwargs):
-        super().__init__(url, referer="https://embed.watchasian.cc/", *args)
+        super().__init__(url, referer="https://embed.watchasian.cc/", *args, **kwargs)
         self.session.headers.update({
             "x-requested-with": "XMLHttpRequest"
         })

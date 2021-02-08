@@ -6,7 +6,7 @@ class Cloud9(Extractor):
     regexes = ["cloud9", "https://cloud9.to"]
 
     def __init__(self, url, *args, **kwargs):
-        super().__init__(url, *args)
+        super().__init__(url, *args, **kwargs)
 
     def extract_url(self):
         url = self.url.replace('https://cloud9.to/embed/',
