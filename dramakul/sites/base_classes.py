@@ -20,6 +20,7 @@ class SearchResult:
 
 
 class Drama:
+    # TODO: __getitem__
     def __init__(self, site, title: str, url: str, meta={}):
         self.site = site
         self.title = title
@@ -48,6 +49,7 @@ class Episode:
         for extractor in self.extractors:
             if extractor.data:
                 return extractor.preferred_stream_url
+        return None
 
     def extract(self) -> List[Extractor]:
         return self.site.extract_episode(self)
