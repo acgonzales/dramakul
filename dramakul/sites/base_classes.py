@@ -83,3 +83,6 @@ class Site(ABC):
     @abstractmethod
     def extract_episode(self, episode, **kwargs) -> List[Extractor]:
         pass
+
+    def __str__(self):
+        return self.name

@@ -5,6 +5,7 @@ SITES = [Dramacool9]
 
 
 def get_site(url, *args, **kwargs) -> Site:
+    url = str(url).lower()
     for site in SITES:
         if site.domain in url or site.name.lower() in url:
             return site()
