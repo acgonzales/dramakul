@@ -1,3 +1,5 @@
+import subprocess
+
 from bs4 import BeautifulSoup
 import jsbeautifier
 import requests
@@ -23,3 +25,10 @@ def soupify(html):
 
 def beautify_js(js):
     return jsbeautifier.beautify(js)
+
+
+def play_on_mpv(urls):
+    # TODO: Player class
+
+    p = subprocess.Popen(["mpv"] + urls)
+    return p

@@ -1,7 +1,7 @@
-from tkinter.constants import DISABLED
 import PySimpleGUI as sg
 
 from dramakul import name as package_name, __version__
+from dramakul.util import play_on_mpv
 from dramakul.sites import SITES, get_site
 
 SITE_NAMES = [site.name for site in SITES]
@@ -35,7 +35,7 @@ def watch_gui():
     ]
 
     episodes_layout = [
-        [sg.Listbox([], select_mode="multiple", size=LISTBOX_SIZE, enable_events=True,
+        [sg.Listbox([], select_mode="multiple", size=LISTBOX_SIZE,
                     key="-EPISODES-", disabled=True)]
     ]
 
@@ -43,7 +43,8 @@ def watch_gui():
         [sg.Text(package_name + " Watch", font=("Any", 20))],
         [sg.Frame("Browse / Search", browse_layout)],
         [sg.Frame("Dramas", dramas_layout, key="-RESULTS-"),
-         sg.VerticalSeparator(), sg.Frame("Episodes", episodes_layout)]
+         sg.VerticalSeparator(), sg.Frame("Episodes", episodes_layout)],
+        [sg.Button("Play", key="-PLAY-")]
     ]
 
     window = sg.Window(window_title + " - Watch", layout)
@@ -93,9 +94,17 @@ def watch_gui():
 
             drama = selected_result.get_info()
             episodes_listbox.update(drama.episodes, disabled=False)
-        elif event == "-EPISODES-":
-            # TODO: Play video using MPV or VLC
-            print(values["-EPISODES-"][0].stream_url)
+        elif event == "-PLAY-":
+            # TODO: Video player process on other thread
+
+            sorted_episodes = sorted(values["-EPISODES-"])
+            urls = [
+                episode.stream_url for episode in sorted_episodes]
+
+            sg.Popup(f"Playing {len(sorted_episodes)} episodes. Have fun!")
+
+            p = play_on_mpv(urls)
+            p.wait()
 
     window.close()
 
