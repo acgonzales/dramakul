@@ -59,6 +59,12 @@ class Episode:
     def __str__(self):
         return f"{self.drama} - {self.episode_number}"
 
+    def __lt__(self, other):
+        return self.episode_number < other.episode_number
+
+    def __eq__(self, other):
+        return self.drama == other.drama and self.episode_number == other.episode_number
+
 
 class Site(ABC):
     name = ""
